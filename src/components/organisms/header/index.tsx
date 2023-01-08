@@ -1,8 +1,12 @@
-interface IHeader {
+import DefaultHeader from "./default.component";
+
+interface IHeaderWapper {
 
 }
-export const Header = ({ children }: React.PropsWithChildren<IHeader>) => {
+const HeaderWrapper: React.FC<IHeaderWapper> = (props: React.PropsWithChildren<IHeaderWapper>) => {
+    const { children } = props;
     return (
-        <>{children}</>
+        <>{children || <DefaultHeader />}</>
     )
 }
+export default HeaderWrapper;

@@ -1,10 +1,14 @@
-interface ISideBar {
+import React from "react";
+import DefaultFooter from "./default.component";
+
+interface IFooterWapper {
 
 }
-const Footer = ({ children }: React.PropsWithChildren<ISideBar>) => {
+const FooterWrapper:React.FC<IFooterWapper> = (props: React.PropsWithChildren<IFooterWapper>) => {
+    const {children}=props;
     return (
-        <>{children}</>
+        <>{children || <DefaultFooter />}</>
     )
 }
 
-export default Footer;
+export default FooterWrapper;

@@ -1,8 +1,13 @@
-interface ISideBar {
+import React from "react"
+import DefaultSideBar from "./deafault.component";
+
+interface ISideBarWrapper {
 
 }
-export const SideBar = ({ children }: React.PropsWithChildren<ISideBar>) => {
+const SideBarWapper :React.FC <ISideBarWrapper>= (props: React.PropsWithChildren<ISideBarWrapper>) => {
+    const {children} =props;
     return (
-        <>{children}</>
+        <>{children  || <DefaultSideBar />}</>
     )
 }
+export default SideBarWapper;

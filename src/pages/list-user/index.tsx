@@ -1,7 +1,8 @@
-import { ContentWrapper } from "components/organisms/content";
-import StandardTemplate from "components/templates/standard";
-import { useUserFetcher } from "hooks/api-fetch/useUserFetcher";
-import React from "react";
+import ContentWrapper from 'components/organisms/content'
+import HeaderWrapper from 'components/organisms/header'
+import StandardTemplate from 'components/templates/standard'
+import { useUserFetcher } from 'hooks/api-fetch/useUserFetcher'
+import React from 'react'
 
 interface IListUserPage {
 
@@ -16,8 +17,20 @@ const ListUserPage: React.FC<IListUserPage> = () => {
             {'Here is the content overrided'}
         </ContentWrapper>
     ), []);
+
+    const memoHeader = React.useMemo(() => (
+        <HeaderWrapper>
+            {'Here is the header overrided'}
+        </HeaderWrapper>
+    ), []);
+
     return (
-        <StandardTemplate templateContent={memoContent} templateFooter={<></>} templateHeader={<></>} templateSideBar={<></>} />
+        <StandardTemplate 
+            templateContent={memoContent} 
+            templateFooter={<></>} 
+            templateHeader={memoHeader} 
+            templateSideBar={<></>}
+        />
     )
 }
 
