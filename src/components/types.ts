@@ -1,3 +1,1 @@
-export interface ITemplateBase {
-    
-}
+export interface ITemplateBase {}

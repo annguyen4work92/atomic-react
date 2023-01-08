@@ -1,11 +1,6 @@
-interface IMenuItem {
-
-}
+interface IMenuItem {}
 const MenuItem = (props: React.PropsWithChildren<IMenuItem>) => {
-   return (
-      <div>
-      </div>
-   )
-}
+  return <div></div>;
+};
 
 export default MenuItem;

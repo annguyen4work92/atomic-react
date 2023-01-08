@@ -1,1 +1,1 @@
-export const EndPointVersion = 'v1';
+export const EndPointVersion = "v1";

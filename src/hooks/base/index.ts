@@ -1,1 +1,1 @@
-export * from 'hooks/base/http-provider';
+export * from "hooks/base/http-provider";

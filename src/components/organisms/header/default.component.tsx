@@ -1,7 +1,5 @@
-interface IHeaderDeafault {
-
-}
-const DefaultHeader :  React.FC<IHeaderDeafault> = () =>{
-   return <>{'Here is default header'}</>
-}
+interface IHeaderDeafault {}
+const DefaultHeader: React.FC<IHeaderDeafault> = () => {
+  return <>{"Here is default header"}</>;
+};
 export default DefaultHeader;
