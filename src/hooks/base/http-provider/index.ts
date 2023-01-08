@@ -16,7 +16,7 @@ export const useHttpProvider = (params?: IHttpProvider) => {
     httpProvider.defaults.headers.Authentication = `Bearer ${'df'}`
     if (!params) return
     const {
-      interceptors: { onRequest, onResponse }
+      interceptors: { onRequest, onResponse },
     } = params
     httpProvider.interceptors.request.use(
       (reqConfig: AxiosRequestConfig<any>) => {
@@ -28,6 +28,6 @@ export const useHttpProvider = (params?: IHttpProvider) => {
     })
   }, [])
   return {
-    httpProvider
+    httpProvider,
   }
 }

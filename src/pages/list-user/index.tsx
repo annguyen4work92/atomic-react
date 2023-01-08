@@ -5,7 +5,7 @@ import { useUserFetcher } from 'hooks/api-fetch/useUserFetcher'
 import React from 'react'
 
 interface IListUserPage {
-  name?: string;
+  name?: string
 }
 
 const ListUserPage: React.FC<IListUserPage> = () => {

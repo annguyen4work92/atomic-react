@@ -14,10 +14,10 @@ const StandardTemplate = (props: IListUserTemplate) => {
     props
   return (
     <div className="layout-wrapper">
-        <div className="header-wrapper">{templateHeader}</div>
-        <div className="sidbar-wrapper">{templateSideBar}</div>
-        <div className="content-wrapper">{templateContent}</div>
-        <div className="footer-wrapper">{templateFooter}</div>
+      <div className="header-wrapper">{templateHeader}</div>
+      <div className="sidbar-wrapper">{templateSideBar}</div>
+      <div className="content-wrapper">{templateContent}</div>
+      <div className="footer-wrapper">{templateFooter}</div>
     </div>
   )
 }

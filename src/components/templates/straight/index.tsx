@@ -11,15 +11,9 @@ export const ListUserTemplate = (props: IListUserTemplate) => {
   const { templateContent, templateHeader, templateFooter } = props
   return (
     <div className="layout-wrapper">
-      <div className="layout-grid__row">
-        <div className="header-wrapper">{templateHeader}</div>
-      </div>
-      <div className="layout-grid__row">
-        <div className="sidbar-wrapper">{templateFooter}</div>
-      </div>
-      <div className="layout-grid__row">
-        <div className="content-wrapper">{templateContent}</div>
-      </div>
+      <div className="header-wrapper">{templateHeader}</div>
+      <div className="sidbar-wrapper">{templateFooter}</div>
+      <div className="content-wrapper">{templateContent}</div>
     </div>
   )
 }
