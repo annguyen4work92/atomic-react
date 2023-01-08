@@ -1,11 +1,11 @@
-import DefaultContent from "./default.component";
+import DefaultContent from './default.component'
 
-interface IContentWrapper {}
-const ContentWrapper: React.FC<IContentWrapper> = (
-  props: React.PropsWithChildren<IContentWrapper>
+interface IFooterWrapper {}
+const FooterWrapper: React.FC<IFooterWrapper> = (
+  props: React.PropsWithChildren<IFooterWrapper>
 ) => {
-  console.log(props);
-  const { children } = props;
-  return <>{children || <DefaultContent />}</>;
-};
-export default ContentWrapper;
+  console.log(props)
+  const { children } = props
+  return <>{children || <DefaultContent />}</>
+}
+export default FooterWrapper

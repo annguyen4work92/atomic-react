@@ -1,6 +1,6 @@
 interface IContenDefault {}
 const DefaultContent: React.FC<IContenDefault> = () => {
-  return <>{"Here is default content"}</>;
-};
+  return <>{'Here is default content'}</>
+}
 
-export default DefaultContent;
+export default DefaultContent

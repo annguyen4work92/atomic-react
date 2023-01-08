@@ -1,5 +1,5 @@
 interface ISideBarDeafault {}
 const DefaultSideBar: React.FC<ISideBarDeafault> = () => {
-  return <>{"Here is default sideBar"}</>;
-};
-export default DefaultSideBar;
+  return <>{'Here is default sideBar'}</>
+}
+export default DefaultSideBar

@@ -1,16 +1,16 @@
-import { ITemplateBase } from "components/types";
-import "./style.scss";
+import { ITemplateBase } from 'components/types'
+import './style.scss'
 
 interface IListUserTemplate extends ITemplateBase {
-  templateHeader: React.ReactElement;
-  templateSideBar: React.ReactElement;
-  templateContent: React.ReactElement;
-  templateFooter: React.ReactElement;
+  templateHeader: React.ReactElement
+  templateSideBar: React.ReactElement
+  templateContent: React.ReactElement
+  templateFooter: React.ReactElement
 }
 
 const StandardTemplate = (props: IListUserTemplate) => {
   const { templateContent, templateHeader, templateSideBar, templateFooter } =
-    props;
+    props
   return (
     <div className="layout-wrapper">
       <div className="layout-grid__row">
@@ -24,7 +24,7 @@ const StandardTemplate = (props: IListUserTemplate) => {
         <div className="footer-wrapper">{templateFooter}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default StandardTemplate;
+export default StandardTemplate
