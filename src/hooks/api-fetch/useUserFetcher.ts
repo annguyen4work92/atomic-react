@@ -30,6 +30,6 @@ export const useUserFetcher = () => {
   }, [setDataSource])
 
   return {
-    dataSource,
+    dataSource
   }
 }

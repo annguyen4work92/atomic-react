@@ -1,7 +1,8 @@
 import ListUserPage from 'pages/list-user'
+import React from 'react'
 import './App.css'
 
-function App() {
+const App = (): React.ReactElement => {
   console.log('>>>>>>')
   return (
     <div className="App">

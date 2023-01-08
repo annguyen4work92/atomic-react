@@ -1,11 +1,11 @@
 import DefaultContent from './default.component'
+import React from 'react'
 
-interface IFooterWrapper {}
-const FooterWrapper: React.FC<IFooterWrapper> = (
-  props: React.PropsWithChildren<IFooterWrapper>
+interface IContentWrapper {}
+const ContentWrapper: React.FC<IContentWrapper> = (
+  props: React.PropsWithChildren<IContentWrapper>
 ) => {
-  console.log(props)
   const { children } = props
   return <>{children || <DefaultContent />}</>
 }
-export default FooterWrapper
+export default ContentWrapper

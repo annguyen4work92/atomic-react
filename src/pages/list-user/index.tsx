@@ -4,7 +4,9 @@ import StandardTemplate from 'components/templates/standard'
 import { useUserFetcher } from 'hooks/api-fetch/useUserFetcher'
 import React from 'react'
 
-interface IListUserPage {}
+interface IListUserPage {
+  name?: string;
+}
 
 const ListUserPage: React.FC<IListUserPage> = () => {
   const { dataSource } = useUserFetcher()
@@ -23,9 +25,9 @@ const ListUserPage: React.FC<IListUserPage> = () => {
   return (
     <StandardTemplate
       templateContent={memoContent}
-      templateFooter={<></>}
+      templateFooter={<>{'I am footer'}</>}
       templateHeader={memoHeader}
-      templateSideBar={<></>}
+      templateSideBar={<>{'Bo may la sidebar'}</>}
     />
   )
 }

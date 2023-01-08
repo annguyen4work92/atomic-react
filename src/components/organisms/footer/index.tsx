@@ -2,6 +2,7 @@ import React from 'react'
 import DefaultFooter from './default.component'
 
 interface IFooterWapper {}
+
 const FooterWrapper: React.FC<IFooterWapper> = (
   props: React.PropsWithChildren<IFooterWapper>
 ) => {

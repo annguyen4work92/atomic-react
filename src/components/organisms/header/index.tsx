@@ -1,3 +1,4 @@
+import React from 'react'
 import DefaultHeader from './default.component'
 
 interface IHeaderWapper {}
