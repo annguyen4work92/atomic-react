@@ -13,23 +13,21 @@ export const useUserFetcher = () => {
   const [dataSource, setDataSource] = React.useState<IUserType[]>([])
   const { httpProvider } = useHttpProvider()
 
-  React.useEffect(() => {
+  const execute = async () => {
     let isCancelled = false
-    const execute = async () => {
-      console.log('Hahaa')
-      const res = await httpProvider.get<IUserType[]>(
-        getApiUrl(EndPoint.GetList)
-      )
-      if (!isCancelled) return
-      setDataSource(res.data as IUserType[])
-    }
-    execute()
-    return () => {
-      isCancelled = true
-    }
-  }, [setDataSource])
+    const res = await httpProvider.get<IUserType[]>(
+      getApiUrl(EndPoint.GetList)
+    )
+    if (!isCancelled) return
+    setDataSource(res.data as IUserType[])
+  }
+
+  React.useEffect(() => {
+    execute();
+  }, [])
 
   return {
     dataSource,
+    fetchUser: execute
   }
 }

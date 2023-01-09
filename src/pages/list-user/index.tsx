@@ -13,8 +13,8 @@ const ListUserPage: React.FC<IListUserPage> = () => {
   console.log(dataSource)
 
   const memoContent = React.useMemo(
-    () => <ContentWrapper>{'Here is the content overrided'}</ContentWrapper>,
-    []
+    () => <ContentWrapper>{JSON.stringify(dataSource)}</ContentWrapper>,
+    [dataSource?.length]
   )
 
   const memoHeader = React.useMemo(
