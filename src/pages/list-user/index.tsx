@@ -10,10 +10,14 @@ interface IListUserPage {
 
 const ListUserPage: React.FC<IListUserPage> = () => {
   const { dataSource } = useUserFetcher()
-  console.log(dataSource)
 
   const memoContent = React.useMemo(
-    () => <ContentWrapper>{JSON.stringify(dataSource)}</ContentWrapper>,
+    () => <ContentWrapper>
+      <button>Hehes</button>
+      <input id="hihi" data-testid="testid"/>
+      <input id="disabled-input" data-testid="disabled-input" disabled/>
+      {JSON.stringify(dataSource)}
+      </ContentWrapper>,
     [dataSource?.length]
   )
 
