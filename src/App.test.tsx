@@ -1,19 +1,28 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
+import React, { useEffect } from 'react'
+import { render, screen, renderHook, waitFor, cleanup } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import App from './App'
 import { EndPoint, getApiUrl } from 'configs'
+import renderer from 'react-test-renderer'
+import { useUserFetcher } from 'hooks/api-fetch/useUserFetcher'
+import { act } from 'react-dom/test-utils'
+import ListUserPage from 'pages/list-user'
+// import axios from 'axios'
+// jest.mock('axios');
+// const mockAxios = axios as jest.Mocked<typeof axios>;
 
-// beforeAll(() => console.log('Start testing'));
-// afterAll(() => console.log('End testing'));
+afterAll(cleanup);
 // beforeEach(() => console.log('Start a test'));
-// afterEach(() => console.log('End a test'))
 
-
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 test('renders learn react link', () => {
-  const {container, baseElement} = render(<App />)
+  act(() => {
+    render(<App />)
+  })
   const linkElement = screen.getByText(/Here is the header/i)
-  console.log(container, baseElement)
   expect(linkElement).toBeInTheDocument()
 
   const id = screen.getByTestId('testid'); // data-testid
@@ -25,27 +34,41 @@ test('renders learn react link', () => {
   expect(disabledInput).toBeDisabled(); // Check item is enabled.
 })
 
+test('App snapshot', async () => {
+  // mockAxios.get.mockResolvedValue({
+  //   data: {"userId":1,"id":1,"title":"delectus aut autem","completed":false}
+  // })
+  const appRenderer = await act(() => renderer.create(<ListUserPage />));
+  // console.log(new Date());
+  const { result } = await renderHook(() => useUserFetcher());
+  console.log(new Date())
+  await waitFor(async () => {
+    console.log(new Date())
+    await sleep(1000);
+    // console.log('>>>', new Date());
+    expect(appRenderer.toJSON()).toMatchSnapshot()
+    expect(result.current.dataSource).toMatchSnapshot();
+    // const data = await result.current.fetchUser();
+    // expect(data).toMatchSnapshot();
+    // const data = await result.current.fetchUser();
+    // console.log('>>>>', result);
+  }, {timeout: 1500})
+})
+
 test('renders learn react Button', () => {
-  render(<App />)
+  act(() => {
+    render(<App />)
+  })
   const ButtonElement = screen.getByText(/Hehes/i)
   expect(ButtonElement).toBeInTheDocument()
 })
 
-test('Call api', async () => {
-  const data = await fetch(getApiUrl(EndPoint.GetList)).then(res => res.json()).then(data => data);
-  console.log(data);
-  // expect(data.completed).toBe(false);
-  expect(Array.isArray(data)).toBe(false);
-  expect(data).toHaveProperty('completed', false)
-  expect(data).toHaveProperty('title', 'delectus aut autem')
-  expect(data).toHaveProperty('id', 1)
-  expect(data).toHaveProperty('userId', 1)
-  // console.log(data)
-})
-
-test('To have data from api', async () => {
-  const data = await fetch(getApiUrl(EndPoint.GetList)).then(res => res.json()).then(data => data);
-  // expect(data).toHaveLength;
-  expect(data).toBeDefined();
-  // console.log(data)
+test('renders data', async () => {
+  act(() => {
+    render(<ListUserPage />)
+  })
+  await waitFor(() => {
+    const ButtonElement = screen.getByText(/"userId":/i)
+    expect(ButtonElement).toBeInTheDocument()
+  })
 })

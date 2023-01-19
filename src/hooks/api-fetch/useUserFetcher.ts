@@ -14,16 +14,15 @@ export const useUserFetcher = () => {
   const { httpProvider } = useHttpProvider()
 
   const execute = async () => {
-    let isCancelled = false
     const res = await httpProvider.get<IUserType[]>(
       getApiUrl(EndPoint.GetList)
     )
-    if (!isCancelled) return
     setDataSource(res.data as IUserType[])
+    return res.data;
   }
 
   React.useEffect(() => {
-    execute();
+    execute()
   }, [])
 
   return {
