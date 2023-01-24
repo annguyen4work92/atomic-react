@@ -9,24 +9,24 @@ export interface IUserType {
   completed: boolean
 }
 
-export const useUserFetcher = () => {
+export const useUserFetcher = ()=> {
   const [dataSource, setDataSource] = React.useState<IUserType[]>([])
   const { httpProvider } = useHttpProvider()
 
-  const execute = async () => {
+  const fetchUser = async () => {
     const res = await httpProvider.get<IUserType[]>(
       getApiUrl(EndPoint.GetList)
     )
     setDataSource(res.data as IUserType[])
-    return res.data;
+    return res.data
   }
 
   React.useEffect(() => {
-    execute()
+    fetchUser()
   }, [])
 
   return {
     dataSource,
-    fetchUser: execute
+    fetchUser
   }
 }

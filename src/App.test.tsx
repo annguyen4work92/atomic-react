@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react'
-import { render, screen, renderHook, waitFor, cleanup } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import App from './App'
-import { EndPoint, getApiUrl } from 'configs'
-import renderer from 'react-test-renderer'
+import { cleanup, render, renderHook, screen, waitFor } from '@testing-library/react'
 import { useUserFetcher } from 'hooks/api-fetch/useUserFetcher'
-import { act } from 'react-dom/test-utils'
 import ListUserPage from 'pages/list-user'
-// import axios from 'axios'
-// jest.mock('axios');
-// const mockAxios = axios as jest.Mocked<typeof axios>;
+import { act } from 'react-dom/test-utils'
+import renderer from 'react-test-renderer'
+import App from './App'
 
 afterAll(cleanup);
 // beforeEach(() => console.log('Start a test'));
@@ -35,24 +29,13 @@ test('renders learn react link', () => {
 })
 
 test('App snapshot', async () => {
-  // mockAxios.get.mockResolvedValue({
-  //   data: {"userId":1,"id":1,"title":"delectus aut autem","completed":false}
-  // })
   const appRenderer = await act(() => renderer.create(<ListUserPage />));
-  // console.log(new Date());
-  const { result } = await renderHook(() => useUserFetcher());
-  console.log(new Date())
+  const { result } = renderHook(() => useUserFetcher());
   await waitFor(async () => {
-    console.log(new Date())
-    await sleep(1000);
-    // console.log('>>>', new Date());
+    await sleep(3000);
     expect(appRenderer.toJSON()).toMatchSnapshot()
     expect(result.current.dataSource).toMatchSnapshot();
-    // const data = await result.current.fetchUser();
-    // expect(data).toMatchSnapshot();
-    // const data = await result.current.fetchUser();
-    // console.log('>>>>', result);
-  }, {timeout: 1500})
+  }, {timeout: 4000})
 })
 
 test('renders learn react Button', () => {
